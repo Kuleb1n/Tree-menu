@@ -1,0 +1,31 @@
+{% load menu_tag %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <title>Menu</title>
+</head>
+<body>
+
+<br>
+<h1>
+        <a href="/">
+            Меню:
+        </a>
+</h1>
+
+{% draw_menu as menu %}
+{% for menu in menu %}
+    <li>
+        <a href="{% url 'menu_cat' menu.slug %}">
+            {{ menu }}
+        </a>
+        {% block menu %}
+        {% endblock %}
+    </li>
+{% endfor %}
+</body>
+</html>

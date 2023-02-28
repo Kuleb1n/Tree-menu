@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block menu %}
+    {% for category in categories %}
+        {% if category.menu.slug == menu.slug %}
+            <ul>
+                <li>
+                    <a href="{% url 'product' menu.slug category.slug %}">
+                        {{ category }}
+                    </a>
+                </li>
+                {% for product in products %}
+                    {% if product.category.slug  == category.slug %}
+                        <ul>
+                            <li>
+                                <a href="#">{{ product }}</a>
+                            </li>
+                        </ul>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
